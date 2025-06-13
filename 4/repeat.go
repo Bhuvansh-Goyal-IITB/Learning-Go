@@ -1,9 +1,11 @@
 package main
 
+import "strings"
+
 func Repeat(char string, repeatNum int) string {
-	var repeat string
+	var repeat strings.Builder
 	for i := 0; i < repeatNum; i++ {
-		repeat += char
+		repeat.WriteString(char)
 	}
-	return repeat
+	return repeat.String()
 }

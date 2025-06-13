@@ -2,7 +2,7 @@ package main
 
 import (
 	"bytes"
-	"reflect"
+	"slices"
 	"testing"
 	"time"
 )
@@ -44,7 +44,7 @@ Go!`
 			write,
 		}
 
-		if !reflect.DeepEqual(want, spySleepPrinter.Calls) {
+		if !slices.Equal(want, spySleepPrinter.Calls) {
 			t.Errorf("wanted calls %v got %v", want, spySleepPrinter.Calls)
 		}
 	})

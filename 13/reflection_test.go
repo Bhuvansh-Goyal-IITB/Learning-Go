@@ -1,7 +1,7 @@
 package main
 
 import (
-	"reflect"
+	"slices"
 	"testing"
 )
 
@@ -86,7 +86,7 @@ func TestWalk(t *testing.T) {
 				got = append(got, input)
 			})
 
-			if !reflect.DeepEqual(got, test.ExpectedCalls) {
+			if !slices.Equal(got, test.ExpectedCalls) {
 				t.Errorf("got %v, want %v", got, test.ExpectedCalls)
 			}
 		})
@@ -123,7 +123,7 @@ func TestWalk(t *testing.T) {
 			got = append(got, input)
 		})
 
-		if !reflect.DeepEqual(got, want) {
+		if !slices.Equal(got, want) {
 			t.Errorf("got %v, want %v", got, want)
 		}
 	})
@@ -140,7 +140,7 @@ func TestWalk(t *testing.T) {
 			got = append(got, input)
 		})
 
-		if !reflect.DeepEqual(got, want) {
+		if !slices.Equal(got, want) {
 			t.Errorf("got %v, want %v", got, want)
 		}
 	})
