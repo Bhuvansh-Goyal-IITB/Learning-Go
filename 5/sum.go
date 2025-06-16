@@ -1,23 +1,16 @@
 package main
 
 func Sum(numbers []int) int {
-	sum := 0
-	for _, num := range numbers {
-		sum += num
-	}
-	return sum
+	return Reduce(numbers, func(acc, x int) int {
+		return acc + x
+	}, 0)
 }
 
 func SumAllTails(slices ...[]int) []int {
-	var output []int
-
-	for _, slice := range slices {
-		if len(slice) == 0 {
-			output = append(output, 0)
-			continue
+	return Reduce(slices, func(acc, x []int) []int {
+		if len(x) == 0 {
+			return append(acc, 0)
 		}
-		output = append(output, Sum(slice[1:]))
-	}
-
-	return output
+		return append(acc, Sum(x[1:]))
+	}, []int{})
 }
